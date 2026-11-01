@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0A0A0B;
+  --surface: #131315;
+  --surface-2: #1B1B1E;
+  --ink: #F3EFE7;
+  --muted: #A09C94;
+  --gold: #D9A441;
+  --gold-hover: #E5B455;
+  --turf: #2F8F46;
+  --turf-glow: #5BE584;
+  --wood: #B98B5E;
+  --border-subtle: rgba(243, 239, 231, 0.09);
+  --border-strong: rgba(243, 239, 231, 0.16);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-gold: var(--gold);
+  --color-gold-hover: var(--gold-hover);
+  --color-turf: var(--turf);
+  --color-turf-glow: var(--turf-glow);
+  --color-wood: var(--wood);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-barlow-condensed), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
+}
+
+@layer base {
+  html {
+    background-color: var(--bg);
+    color: var(--ink);
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgba(217, 164, 65, 0.3);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+}
+
+/* Textura sutil de gramado cortado (faixas de campo esportivo) */
+.bg-turf-stripes {
+  background-image:
+    radial-gradient(ellipse 80% 55% at 50% 0%, rgba(47, 143, 70, 0.16), transparent 72%),
+    repeating-linear-gradient(
+      112deg,
+      rgba(47, 143, 70, 0.055) 0px,
+      rgba(47, 143, 70, 0.055) 56px,
+      rgba(10, 10, 11, 0.02) 56px,
+      rgba(10, 10, 11, 0.02) 112px
+    );
+}
+
+/* Textura sutil de painéis de metal corrugado escuro (listras verticais finas) */
+.bg-corrugated-metal {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.018) 0px,
+    rgba(255, 255, 255, 0.018) 1px,
+    transparent 1px,
+    transparent 12px,
+    rgba(0, 0, 0, 0.36) 12px,
+    rgba(0, 0, 0, 0.36) 14px,
+    transparent 14px,
+    transparent 24px
+  );
+}
+
+/* Textura de gramado sintético para cards e placeholders */
+.bg-turf-placeholder {
+  background-color: #0e1410;
+  background-image:
+    radial-gradient(circle at 25% 20%, rgba(47, 143, 70, 0.24), transparent 60%),
+    repeating-linear-gradient(
+      105deg,
+      rgba(47, 143, 70, 0.09) 0px,
+      rgba(47, 143, 70, 0.09) 32px,
+      rgba(14, 20, 16, 0.2) 32px,
+      rgba(14, 20, 16, 0.2) 64px
+    );
+}
+
+/* Ruído leve / grain cinematográfico via SVG data URI */
+.bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+}
+
+/* Linhas técnicas estilo marcação de quadra/campo */
+.pitch-grid-lines {
+  background-size: 64px 64px;
+  background-image:
+    linear-gradient(to right, rgba(243, 239, 231, 0.028) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(243, 239, 231, 0.028) 1px, transparent 1px);
+}
+
+/* Marquee animation */
+@keyframes marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee-scroll 34s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Radix Accordion animations */
+@keyframes accordion-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+.animate-accordion-down {
+  animation: accordion-down 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-accordion-up {
+  animation: accordion-up 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-accordion-down,
+  .animate-accordion-up {
+    animation: none !important;
+  }
+}
+
