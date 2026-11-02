@@ -1,4 +1,4 @@
-import { CalendarDays, CreditCard, MapPin, Users } from "lucide-react";
+import { CalendarDays, CreditCard, MapPin } from "lucide-react";
 import { cursoContent } from "@/content/curso";
 import { CursoHeroActions, CursoHeroBadge } from "@/components/curso/curso-hero-actions";
 import { Reveal } from "@/components/effects/reveal";
@@ -67,24 +67,12 @@ export function CursoHero() {
               <ClinicMedia
                 src={cursoContent.media.coverImagePath}
                 alt={cursoContent.media.coverAlt}
-                label="Imersão Presencial"
                 accent="gold"
                 priority
                 sizes="(max-width: 1024px) 100vw, 42vw"
-                className="aspect-[4/4.6] w-full"
+                className="aspect-[2/3] w-full"
+                imageClassName="object-contain"
               />
-
-              <div className="relative z-10 -mt-20 p-5 sm:p-6">
-                <div className="rounded-xl border border-ink/12 bg-bg/90 p-4 backdrop-blur-md">
-                  <div className="flex items-center gap-2 text-xs font-semibold tracking-wider text-gold uppercase">
-                    <Users className="h-4 w-4" aria-hidden="true" />
-                    <span>Ministrante: Lucas Streck</span>
-                  </div>
-                  <p className="mt-1.5 text-xs leading-relaxed text-muted">
-                    Estudantes de Fisioterapia e fisioterapeutas · Vagas presenciais limitadas.
-                  </p>
-                </div>
-              </div>
             </div>
           </Reveal>
         </div>

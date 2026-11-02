@@ -84,7 +84,7 @@ export const cursoContent = {
   },
 
   media: {
-    coverImagePath: "/images/curso-capa.jpg",
+    coverImagePath: "/images/curso-hero.png",
     coverAlt: "Capa do curso Avaliação e reabilitação do joelho: do raciocínio clínico à prática",
   },
 
@@ -221,7 +221,7 @@ export const cursoContent = {
     eyebrow: "Ministrante",
     name: "Lucas Streck",
     role: "Fisioterapeuta · Fisioterapia Traumato-Esportiva",
-    registration: "", // [CONFIRMAR número oficial do CREFITO]
+    registration: "CREFITO-5",
     imagePath: "/images/lucas-streck.png",
     bioParagraphs: [
       "Fisioterapeuta à frente da Clínica Lucas Streck Fisioterapia, em Pelotas/RS, atuando diariamente na reabilitação traumato-esportiva de pacientes ortopédicos e atletas de diferentes modalidades.",
